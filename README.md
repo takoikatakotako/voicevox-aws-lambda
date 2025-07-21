@@ -1,6 +1,6 @@
-# VOIECVOX AWS Lambda
+# VOICEVOX AWS Lambda
 
-VOIECVOX AWS Lambda は VOICEVOX を Lambda で動かすためのサンプルコードです。
+VOICEVOX AWS Lambda は VOICEVOX を Lambda で動かすためのサンプルコードです。
 
 
 ## セットアップ
@@ -28,24 +28,21 @@ chmod +x download
 ├── download
 └── voicevox_core
     ├── c_api
-    │   ...
     │   ├── include
     │   │   └── voicevox_core.h
     │   └── lib
     │       └── libvoicevox_core.so
     ├── dict
     │   └── open_jtalk_dic_utf_8-1.11
-    │       ...
+    │       └── ...
     ├── models
-    │   ...
     │   └── vvms
     │       ├── 0.vvm
     │       ├── 1.vvm
-    │       ...
+    │       └── ...
     └── onnxruntime
-        ├── lib
-        │   └── libvoicevox_onnxruntime.so.1.17.3
-        ...
+        └── lib
+            └── libvoicevox_onnxruntime.so.1.17.3
 ```
 
 `voicevox_core` ディレクトリを S3 にアップロードします。
@@ -76,31 +73,30 @@ aws s3 sync s3://${S3_BUCKET_NAME}/voicevox_core voicevox_core
 ```
 .
 ├── app
-│   ├── go.mod
-│   ├── go.sum
-│   ├── main.go
-│   ├── voicevox_core.go
-│   └── voicevox_wrapper.go
+│   ├── go.mod
+│   ├── go.sum
+│   ├── main.go
+│   ├── voicevox_core.go
+│   └── voicevox_wrapper.go
 ├── Dockerfile
 ├── lib
-│   ├── libvoicevox_core.so
-│   ├── libvoicevox_onnxruntime.so.1.17.3
-│   ├── open_jtalk_dic_utf_8-1.11
-│   │   ├── char.bin
-│   │   ├── COPYING
-│   │   ├── left-id.def
-│   │   ├── matrix.bin
-│   │   ├── pos-id.def
-│   │   ├── rewrite.def
-│   │   ├── right-id.def
-│   │   ├── sys.dic
-│   │   └── unk.dic
-│   ├── voicevox_core.h
-│   └── vvms
-│       ├── 0.vvm
-│       ├── 1.vvm
-│       ...
-│       └── 9.vvm
+│   ├── libvoicevox_core.so
+│   ├── libvoicevox_onnxruntime.so.1.17.3
+│   ├── open_jtalk_dic_utf_8-1.11
+│   │   ├── char.bin
+│   │   ├── COPYING
+│   │   ├── left-id.def
+│   │   ├── matrix.bin
+│   │   ├── pos-id.def
+│   │   ├── rewrite.def
+│   │   ├── right-id.def
+│   │   ├── sys.dic
+│   │   └── unk.dic
+│   ├── voicevox_core.h
+│   └── vvms
+│       ├── 0.vvm
+│       ├── 1.vvm
+│       └── ...
 └── README.md
 ```
 
@@ -109,7 +105,7 @@ aws s3 sync s3://${S3_BUCKET_NAME}/voicevox_core voicevox_core
 
 Dockerfile のビルドを行います。
 
-```
+```bash
 docker build . -t voicevox-aws-lambda:latest
 ```
 
@@ -119,4 +115,3 @@ docker build . -t voicevox-aws-lambda:latest
 以下のリポジトリを参考にさせていただきました。
 
 - [voicevoxcore.go](https://github.com/sh1ma/voicevoxcore.go)
-
